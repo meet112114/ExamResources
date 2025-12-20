@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Manifest, Subject } from '../types';
 
@@ -7,6 +7,7 @@ const SubjectView: React.FC = () => {
     const navigate = useNavigate();
     const [subject, setSubject] = useState<Subject | null>(null);
     const [loading, setLoading] = useState(true);
+    const [currentPath, setCurrentPath] = useState<string[]>([]);
 
     useEffect(() => {
         fetch('/manifest.json')
@@ -24,10 +25,61 @@ const SubjectView: React.FC = () => {
             });
     }, [subjectName]);
 
-    const handleFileClick = (fileName: string) => {
-        // Construct path to file
-        const filePath = `/Resources/${subjectName}/${fileName}`;
+    // Calculate items to display based on current path
+    const viewItems = useMemo(() => {
+        if (!subject) return { folders: [], files: [] };
+
+        const currentPathStr = currentPath.join('/');
+        const folders = new Set<string>();
+        const files: string[] = [];
+
+        subject.files.forEach(file => {
+            // Check if file belongs to current path
+            if (currentPath.length > 0 && !file.startsWith(currentPathStr + '/')) {
+                return;
+            }
+
+            // Get relative path part
+            const relativePath = currentPath.length > 0
+                ? file.slice(currentPathStr.length + 1)
+                : file;
+
+            const parts = relativePath.split('/');
+
+            if (parts.length > 1) {
+                // It's in a subfolder relative to current view
+                folders.add(parts[0]);
+            } else {
+                // It's a file in current view
+                files.push(file); // Store full path for opening
+            }
+        });
+
+        return {
+            folders: Array.from(folders).sort(),
+            files: files.sort()
+        };
+    }, [subject, currentPath]);
+
+    const handleFolderClick = (folderName: string) => {
+        setCurrentPath([...currentPath, folderName]);
+    };
+
+    const handleFileClick = (fullPath: string) => {
+        const filePath = `/Resources/${subjectName}/${fullPath}`;
         window.open(filePath, '_blank');
+    };
+
+    const handleBackClick = () => {
+        if (currentPath.length > 0) {
+            setCurrentPath(currentPath.slice(0, -1));
+        } else {
+            navigate('/');
+        }
+    };
+
+    const getDisplayName = (fullPath: string) => {
+        return fullPath.split('/').pop() || fullPath;
     };
 
     if (loading) return <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>Loading...</div>;
@@ -42,7 +94,7 @@ const SubjectView: React.FC = () => {
     return (
         <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
             <button
-                onClick={() => navigate('/')}
+                onClick={handleBackClick}
                 style={{
                     background: 'transparent',
                     color: 'var(--text-secondary)',
@@ -54,21 +106,58 @@ const SubjectView: React.FC = () => {
                     padding: '8px 16px',
                     borderRadius: '8px',
                     border: '1px solid var(--glass-border)',
-                    transition: 'all 0.2s'
+                    transition: 'all 0.2s',
+                    cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--text-primary)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--glass-border)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
             >
-                ← Back to Subjects
+                ← {currentPath.length > 0 ? 'Back' : 'Back to Subjects'}
             </button>
 
             <header style={{ marginBottom: '40px', borderBottom: '1px solid var(--glass-border)', paddingBottom: '20px' }}>
                 <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>{subject.name}</h1>
-                <p style={{ color: 'var(--text-secondary)' }}>{subject.files.length} Resources Available</p>
+                <p style={{ color: 'var(--text-secondary)' }}>
+                    {currentPath.length > 0 ? `/${currentPath.join('/')}` : 'All Resources'}
+                </p>
             </header>
 
             <div style={{ display: 'grid', gap: '16px' }}>
-                {subject.files.map((file) => (
+                {/* Folders */}
+                {viewItems.folders.map((folder) => (
+                    <div
+                        key={folder}
+                        onClick={() => handleFolderClick(folder)}
+                        style={{
+                            background: 'var(--card-bg)',
+                            border: '1px solid var(--glass-border)',
+                            borderRadius: '12px',
+                            padding: '20px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'rgba(56, 189, 248, 0.1)';
+                            e.currentTarget.style.borderColor = 'var(--accent-color)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'var(--card-bg)';
+                            e.currentTarget.style.borderColor = 'var(--glass-border)';
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <span style={{ fontSize: '1.5rem' }}>📁</span>
+                            <span style={{ fontSize: '1.1rem', fontWeight: '500' }}>{folder}</span>
+                        </div>
+                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Open Folder →</span>
+                    </div>
+                ))}
+
+                {/* Files */}
+                {viewItems.files.map((file) => (
                     <div
                         key={file}
                         onClick={() => handleFileClick(file)}
@@ -94,11 +183,17 @@ const SubjectView: React.FC = () => {
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                             <span style={{ fontSize: '1.5rem' }}>📄</span>
-                            <span style={{ fontSize: '1.1rem', fontWeight: '500' }}>{file}</span>
+                            <span style={{ fontSize: '1.1rem', fontWeight: '500' }}>{getDisplayName(file)}</span>
                         </div>
                         <span style={{ color: 'var(--accent-color)', fontSize: '0.9rem' }}>View PDF →</span>
                     </div>
                 ))}
+
+                {viewItems.folders.length === 0 && viewItems.files.length === 0 && (
+                    <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-secondary)' }}>
+                        No files in this folder.
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -18,12 +18,33 @@ const generateManifest = () => {
 
   const items = fs.readdirSync(resourcesDir);
 
+  // Helper function to recursively find PDF files
+  const getPdfFiles = (dir, rootDir) => {
+    let results = [];
+    const list = fs.readdirSync(dir);
+
+    for (const file of list) {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+
+      if (stat && stat.isDirectory()) {
+        results = results.concat(getPdfFiles(filePath, rootDir));
+      } else if (file.toLowerCase().endsWith('.pdf')) {
+        // Get path relative to the subject root directory
+        // Replace backslashes with forward slashes for URL compatibility
+        const relativePath = path.relative(rootDir, filePath).split(path.sep).join('/');
+        results.push(relativePath);
+      }
+    }
+    return results;
+  };
+
   for (const item of items) {
     const itemPath = path.join(resourcesDir, item);
     const stats = fs.statSync(itemPath);
 
     if (stats.isDirectory()) {
-      const files = fs.readdirSync(itemPath).filter(f => f.toLowerCase().endsWith('.pdf'));
+      const files = getPdfFiles(itemPath, itemPath);
       if (files.length > 0) {
         subjects.push({
           name: item,

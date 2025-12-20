@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2025-12-20T15:55:28.023Z",
+  "subjects": [
+    {
+      "name": "DBMS",
+      "files": [
+        "DBMS.pdf"
+      ]
+    },
+    {
+      "name": "DS",
+      "files": [
+        "DS_1_.pdf",
+        "DS_2_.pdf",
+        "DS_3_.pdf",
+        "DS_4_.pdf",
+        "DS_5_.pdf"
+      ]
+    },
+    {
+      "name": "JAVA",
+      "files": [
+        "Java_1_.pdf",
+        "Java_2_.pdf",
+        "Java_3_.pdf",
+        "Java_4.1_.pdf",
+        "Java_4.2_.pdf",
+        "Java_5_.pdf",
+        "Java_6_.pdf"
+      ]
+    },
+    {
+      "name": "OOSE",
+      "files": [
+        "OOSE_1_.pdf",
+        "OOSE_2_.pdf",
+        "OOSE_3_.pdf",
+        "OOSE_4_.pdf",
+        "OOSE_5_.pdf"
+      ]
+    },
+    {
+      "name": "PPD",
+      "files": [
+        "PPD_1_.pdf",
+        "PPD_2_.pdf",
+        "PPD_3_.pdf",
+        "PPD_4_.pdf",
+        "PPD_5_.pdf"
+      ]
+    },
+    {
+      "name": "PPMOB",
+      "files": [
+        "PPMOB_GROUP&TEAM_.pdf",
+        "PPMOB_LEADERSHIP_.pdf",
+        "PPMOB_MANAGEMENT_.pdf",
+        "PPMOB_MOTIVATION_.pdf",
+        "PPMOB_O&STAFFING_.pdf",
+        "PPMOB_OB_.pdf",
+        "PPMOB_OC_.pdf",
+        "PPMOB_PERSONALITY_.pdf",
+        "PPMOB_TUCKMAN(GRP_DEV)_.pdf"
+      ]
+    }
+  ]
+}

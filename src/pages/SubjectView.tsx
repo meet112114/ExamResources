@@ -10,7 +10,7 @@ const SubjectView: React.FC = () => {
     const [currentPath, setCurrentPath] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch('/manifest.json')
+        fetch('/resources.json')
             .then(res => res.json())
             .then((data: Manifest) => {
                 const found = data.subjects.find(s => s.name === subjectName);

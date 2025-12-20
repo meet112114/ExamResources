@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const resourcesDir = path.join(__dirname, '../public/Resources');
-const outputFile = path.join(__dirname, '../public/manifest.json');
+const outputFile = path.join(__dirname, '../public/resources.json');
 
 const generateManifest = () => {
   if (!fs.existsSync(resourcesDir)) {

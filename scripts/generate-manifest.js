@@ -9,13 +9,13 @@ const resourcesDir = path.join(__dirname, '../public/Resources');
 const outputFile = path.join(__dirname, '../public/resources.json');
 
 const generateManifest = () => {
-  if (!fs.existsSync(resourcesDir)) {
-    console.error(`Resources directory not found at: ${resourcesDir}`);
-    process.exit(1);
+  // Ensure data directory exists
+  const dataDir = path.join(__dirname, '../public/data');
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
   }
 
   const subjects = [];
-
   const items = fs.readdirSync(resourcesDir);
 
   // Helper function to recursively find PDF files
@@ -46,21 +46,39 @@ const generateManifest = () => {
     if (stats.isDirectory()) {
       const files = getPdfFiles(itemPath, itemPath);
       if (files.length > 0) {
+        // Add to main subjects list (lightweight)
         subjects.push({
           name: item,
-          files: files
+          files: files // We actually only need the count for the home page, but keeping struct similar
         });
+
+        // Write individual subject file (heavyweight)
+        const subjectData = {
+          generatedAt: new Date().toISOString(),
+          name: item,
+          files: files
+        };
+        const subjectPath = path.join(dataDir, `${item}.json`);
+        fs.writeFileSync(subjectPath, JSON.stringify(subjectData, null, 2));
+        console.log(`Generated data for: ${item}`);
       }
     }
   }
 
-  const manifest = {
+  // Write main subjects index (lightweight)
+  // We map to create a lighter version for the home page that only needs names and counts
+  const subjectsIndex = {
     generatedAt: new Date().toISOString(),
-    subjects: subjects
+    subjects: subjects.map(s => ({
+      name: s.name,
+      files: s.files // Keeping full files for now to match interface, but in future could just be count
+    }))
   };
 
-  fs.writeFileSync(outputFile, JSON.stringify(manifest, null, 2));
-  console.log(`Manifest generated at: ${outputFile}`);
+  const subjectsFile = path.join(__dirname, '../public/subjects.json');
+  fs.writeFileSync(subjectsFile, JSON.stringify(subjectsIndex, null, 2));
+
+  console.log(`Subjects index generated at: ${subjectsFile}`);
   console.log(`Found ${subjects.length} subjects.`);
 };
 

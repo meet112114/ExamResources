@@ -7,7 +7,7 @@ const Home: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/resources.json')
+        fetch('/subjects.json')
             .then(res => res.json())
             .then((data: Manifest) => {
                 setSubjects(data.subjects);

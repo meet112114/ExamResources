@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import type { Manifest, Subject } from '../types';
+import type { Subject } from '../types';
 
 const SubjectView: React.FC = () => {
     const { subjectName } = useParams<{ subjectName: string }>();
@@ -10,17 +10,22 @@ const SubjectView: React.FC = () => {
     const [currentPath, setCurrentPath] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch('/resources.json')
-            .then(res => res.json())
-            .then((data: Manifest) => {
-                const found = data.subjects.find(s => s.name === subjectName);
-                if (found) {
-                    setSubject(found);
-                }
+        // Optimistically set subject name from URL while loading
+        if (subjectName) {
+            // We can't know files yet, but we can set the name
+        }
+
+        fetch(`/data/${subjectName}.json`)
+            .then(res => {
+                if (!res.ok) throw new Error('Subject not found');
+                return res.json();
+            })
+            .then((data: Subject) => {
+                setSubject(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.error('Failed to load manifest', err);
+                console.error('Failed to load subject data', err);
                 setLoading(false);
             });
     }, [subjectName]);
@@ -79,7 +84,7 @@ const SubjectView: React.FC = () => {
     };
 
     const getDisplayName = (fullPath: string) => {
-        return fullPath.split('/').pop() || fullPath;
+        return (fullPath.split('/').pop() || fullPath).replace(/\.pdf$/i, '');
     };
 
     if (loading) return <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>Loading...</div>;

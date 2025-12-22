@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2025-12-22T17:06:23.898Z",
+  "subjects": [
+    {
+      "name": "DBMS",
+      "files": [
+        "DBMS_1_.pdf",
+        "DBMS_2_.pdf",
+        "DBMS_3_.pdf",
+        "DBMS_4_.pdf",
+        "DBMS_5_.pdf",
+        "DBMS_6_.pdf",
+        "DBMS_A_B_C.pdf",
+        "QB_ANS/DBMS_QB_UNIT_1_Meet_.pdf",
+        "QB_ANS/DBMS_QB_UNIT_2_Meet_.pdf",
+        "QB_ANS/DBMS_QB_UNIT_3_Meet_.pdf"
+      ]
+    },
+    {
+      "name": "DS",
+      "files": [
+        "DS_1_.pdf",
+        "DS_2_.pdf",
+        "DS_3_.pdf",
+        "DS_4_.pdf",
+        "DS_5_.pdf"
+      ]
+    },
+    {
+      "name": "JAVA",
+      "files": [
+        "Java_1_.pdf",
+        "Java_2_.pdf",
+        "Java_3_.pdf",
+        "Java_4.1_.pdf",
+        "Java_4.2_.pdf",
+        "Java_5_.pdf",
+        "Java_6_.pdf"
+      ]
+    },
+    {
+      "name": "OOSE",
+      "files": [
+        "IMP/OOSE_1_QB_.pdf",
+        "IMP/OOSE_2_QB_.pdf",
+        "IMP/OOSE_3_QB_.pdf",
+        "IMP/OOSE_4_QB_.pdf",
+        "IMP/OOSE_5_QB_.pdf",
+        "OOSE_1_.pdf",
+        "OOSE_2_.pdf",
+        "OOSE_3_.pdf",
+        "OOSE_4_.pdf",
+        "OOSE_5_.pdf"
+      ]
+    },
+    {
+      "name": "PPD",
+      "files": [
+        "PPD_1_.pdf",
+        "PPD_2_.pdf",
+        "PPD_3_.pdf",
+        "PPD_4_.pdf",
+        "PPD_5_.pdf"
+      ]
+    },
+    {
+      "name": "PPMOB",
+      "files": [
+        "PPMOB_GROUP&TEAM_.pdf",
+        "PPMOB_LEADERSHIP_.pdf",
+        "PPMOB_MANAGEMENT_.pdf",
+        "PPMOB_MOTIVATION_.pdf",
+        "PPMOB_O&STAFFING_.pdf",
+        "PPMOB_OB_.pdf",
+        "PPMOB_OC_.pdf",
+        "PPMOB_PERSONALITY_.pdf",
+        "PPMOB_TUCKMAN(GRP_DEV)_.pdf"
+      ]
+    }
+  ]
+}

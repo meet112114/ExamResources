@@ -43,6 +43,9 @@ const Home: React.FC = () => {
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>
                     Access all your learning resources in one place
                 </p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
+                    !! VERIFY DS ALGORITHM'S IN QB_ANS PDF !!
+                </p>
             </header>
 
             <div style={{

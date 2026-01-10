@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-12-22T17:06:23.898Z",
+  "generatedAt": "2026-01-10T16:47:41.988Z",
   "subjects": [
     {
       "name": "DBMS",
@@ -13,7 +13,10 @@
         "DBMS_A_B_C.pdf",
         "QB_ANS/DBMS_QB_UNIT_1_Meet_.pdf",
         "QB_ANS/DBMS_QB_UNIT_2_Meet_.pdf",
-        "QB_ANS/DBMS_QB_UNIT_3_Meet_.pdf"
+        "QB_ANS/DBMS_QB_UNIT_3_Meet_.pdf",
+        "QB_ANS/DBMS_QB_UNIT_4_Meet_.pdf",
+        "QB_ANS/DBMS_QB_UNIT_5_Meet_.pdf",
+        "QB_ANS/DBMS_QB_UNIT_6_Meet_.pdf"
       ]
     },
     {
@@ -23,7 +26,16 @@
         "DS_2_.pdf",
         "DS_3_.pdf",
         "DS_4_.pdf",
-        "DS_5_.pdf"
+        "DS_5_.pdf",
+        "DS_6_.pdf",
+        "DS_ALL_Algorithms _.pdf",
+        "DS_ALL_ALGO_.pdf",
+        "QB_ANS/DS_QB_UNIT_1_M_.pdf",
+        "QB_ANS/DS_QB_UNIT_2_M_.pdf",
+        "QB_ANS/DS_QB_UNIT_3_M_.pdf",
+        "QB_ANS/DS_QB_UNIT_4_M_.pdf",
+        "QB_ANS/DS_QB_UNIT_5_M_.pdf",
+        "QB_ANS/DS_QB_UNIT_6_M_.pdf"
       ]
     },
     {
@@ -35,7 +47,13 @@
         "Java_4.1_.pdf",
         "Java_4.2_.pdf",
         "Java_5_.pdf",
-        "Java_6_.pdf"
+        "Java_6_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_1_M_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_2_M_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_3_M_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_4_M_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_5_M_.pdf",
+        "QB_ANS/JAVA_QB_UNIT_6_M_.pdf"
       ]
     },
     {
@@ -46,11 +64,13 @@
         "IMP/OOSE_3_QB_.pdf",
         "IMP/OOSE_4_QB_.pdf",
         "IMP/OOSE_5_QB_.pdf",
+        "IMP/OOSE_6_QB_.pdf",
         "OOSE_1_.pdf",
         "OOSE_2_.pdf",
         "OOSE_3_.pdf",
         "OOSE_4_.pdf",
-        "OOSE_5_.pdf"
+        "OOSE_5_.pdf",
+        "OOSE_6_.pdf"
       ]
     },
     {
@@ -60,7 +80,9 @@
         "PPD_2_.pdf",
         "PPD_3_.pdf",
         "PPD_4_.pdf",
-        "PPD_5_.pdf"
+        "PPD_5_.pdf",
+        "PPD_ALL_UNIT_FORMULAS_.pdf",
+        "PPD_THEORY_QB_.pdf"
       ]
     },
     {

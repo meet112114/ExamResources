@@ -121,7 +121,7 @@ const SubjectView: React.FC = () => {
             </button>
 
             <header style={{ marginBottom: '40px', borderBottom: '1px solid var(--glass-border)', paddingBottom: '20px' }}>
-                <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>{subject.name}</h1>
+                <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>{subject.name.replace(/_S\d+$/i, '')}</h1>
                 <p style={{ color: 'var(--text-secondary)' }}>
                     {currentPath.length > 0 ? `/${currentPath.join('/')}` : 'All Resources'}
                 </p>

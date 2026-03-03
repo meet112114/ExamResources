@@ -2,11 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface SubjectCardProps {
-  name: string;
+  name: string;        // raw folder name (used for routing), e.g. "DBMS_S1"
+  displayName: string; // clean display name, e.g. "DBMS"
   fileCount: number;
 }
 
-const SubjectCard: React.FC<SubjectCardProps> = ({ name, fileCount }) => {
+const SubjectCard: React.FC<SubjectCardProps> = ({ name, displayName, fileCount }) => {
   const navigate = useNavigate();
 
   return (
@@ -25,7 +26,7 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ name, fileCount }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '200px',
+        minHeight: '180px',
         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
       }}
       onMouseEnter={(e) => {
@@ -47,14 +48,15 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ name, fileCount }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: '2rem',
+        fontSize: '1.6rem',
         marginBottom: '16px',
         color: '#fff',
+        fontWeight: '700',
         boxShadow: '0 10px 15px -3px rgba(56, 189, 248, 0.3)'
       }}>
-        {name.charAt(0).toUpperCase()}
+        {displayName.charAt(0).toUpperCase()}
       </div>
-      <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '8px' }}>{name}</h3>
+      <h3 style={{ fontSize: '1.15rem', fontWeight: '600', marginBottom: '8px', textAlign: 'center' }}>{displayName}</h3>
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{fileCount} Files</p>
     </div>
   );

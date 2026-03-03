@@ -1,8 +1,17 @@
 {
-  "generatedAt": "2026-01-10T16:47:41.988Z",
+  "generatedAt": "2026-03-03T07:21:38.774Z",
   "subjects": [
     {
-      "name": "DBMS",
+      "name": "AI_S2",
+      "files": [
+        "AI_UNIT1.pdf",
+        "AI_UNIT2.pdf",
+        "QB_ANS/AI_U1_QB_WA.pdf",
+        "QB_ANS/AI_U2_QB_WA.pdf"
+      ]
+    },
+    {
+      "name": "DBMS_S1",
       "files": [
         "DBMS_1_.pdf",
         "DBMS_2_.pdf",
@@ -20,7 +29,7 @@
       ]
     },
     {
-      "name": "DS",
+      "name": "DS_S1",
       "files": [
         "DS_1_.pdf",
         "DS_2_.pdf",
@@ -39,7 +48,7 @@
       ]
     },
     {
-      "name": "JAVA",
+      "name": "JAVA_S1",
       "files": [
         "Java_1_.pdf",
         "Java_2_.pdf",
@@ -57,7 +66,18 @@
       ]
     },
     {
-      "name": "OOSE",
+      "name": "ML_S2",
+      "files": [
+        "ML_Unit-1.1.pdf",
+        "ML_Unit-1.2.pdf",
+        "ML_Unit-1.3.pdf",
+        "ML_Unit-2.1.pdf",
+        "QB_ANS/ML_U1_QB_WA.pdf",
+        "QB_ANS/ML_U2_(Half_For_IA_1)_QB_WA.pdf"
+      ]
+    },
+    {
+      "name": "OOSE_S1",
       "files": [
         "IMP/OOSE_1_QB_.pdf",
         "IMP/OOSE_2_QB_.pdf",
@@ -74,7 +94,7 @@
       ]
     },
     {
-      "name": "PPD",
+      "name": "PPD_S1",
       "files": [
         "PPD_1_.pdf",
         "PPD_2_.pdf",
@@ -86,7 +106,7 @@
       ]
     },
     {
-      "name": "PPMOB",
+      "name": "PPMOB_S1",
       "files": [
         "PPMOB_GROUP&TEAM_.pdf",
         "PPMOB_LEADERSHIP_.pdf",
@@ -97,6 +117,15 @@
         "PPMOB_OC_.pdf",
         "PPMOB_PERSONALITY_.pdf",
         "PPMOB_TUCKMAN(GRP_DEV)_.pdf"
+      ]
+    },
+    {
+      "name": "WDJ_S2",
+      "files": [
+        "QB_ANS/WDJ_U1_QB_WA.pdf",
+        "QB_ANS/WDJ_U2_QB_WA.pdf",
+        "UNIT_1_JAVA_JDBC.pdf",
+        "UNIT_2_JAVA_SERVLET.pdf"
       ]
     }
   ]

@@ -90,7 +90,7 @@ const Home: React.FC = () => {
                     Access all your learning resources in one place
                 </p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-                    !! VERIFY DS ALGORITHM'S IN QB_ANS PDF !!
+                    !! Verify before using — based on notes still may contain errors. !!
                 </p>
             </header>
 

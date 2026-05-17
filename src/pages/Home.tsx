@@ -76,6 +76,36 @@ const Home: React.FC = () => {
     return (
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
             <header style={{ textAlign: 'center', marginBottom: '60px' }}>
+                <style>
+                    {`
+                    .ai-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        padding: 8px 20px;
+                        background: rgba(139, 92, 246, 0.1);
+                        border: 1px solid rgba(139, 92, 246, 0.3);
+                        color: #a78bfa;
+                        text-decoration: none;
+                        border-radius: 999px;
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        margin-bottom: 24px;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+                    }
+                    .ai-link:hover {
+                        background: rgba(139, 92, 246, 0.2);
+                        border-color: rgba(139, 92, 246, 0.5);
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+                        color: #ddd6fe;
+                    }
+                    `}
+                </style>
+                <a href="https://studyassistant.mslab.cc" target="_blank" rel="noopener noreferrer" className="ai-link">
+                    ✨ Try New AI Study Assistant <span>→</span>
+                </a>
                 <h1 style={{
                     fontSize: '3.5rem',
                     fontWeight: '800',

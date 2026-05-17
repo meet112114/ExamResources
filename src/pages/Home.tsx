@@ -36,7 +36,7 @@ const Home: React.FC = () => {
 
     const trackClick = (label: string) => {
         if (typeof window !== 'undefined' && (window as any).gtag) {
-            (window as any).gtag('event', 'click', {
+            (window as any).gtag('event', 'custom_button_click', {
                 event_category: 'outbound',
                 event_label: label,
             });

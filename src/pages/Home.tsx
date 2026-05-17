@@ -35,10 +35,12 @@ const Home: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     const trackClick = (label: string) => {
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-            (window as any).gtag('event', 'custom_button_click', {
-                event_category: 'outbound',
-                event_label: label,
+        console.log(`[Analytics] Track button clicked: ${label}`);
+
+        if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'select_content', {
+                content_type: 'outbound_link',
+                item_id: label,
             });
         }
     };
